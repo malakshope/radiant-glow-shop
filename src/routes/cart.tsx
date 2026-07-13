@@ -81,7 +81,8 @@ function CartPage() {
                   <form
                     onSubmit={(e) => {
                       e.preventDefault();
-                      setMsg(applyCoupon(couponInput));
+                      const r = applyCoupon(couponInput);
+                      setMsg({ ok: r.ok, text: r.message });
                       setCouponInput("");
                     }}
                     className="flex gap-2"

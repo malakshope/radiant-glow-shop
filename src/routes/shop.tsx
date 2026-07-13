@@ -40,7 +40,7 @@ function Shop() {
   const navigate = useNavigate({ from: "/shop" });
 
   const setSearch = (patch: Partial<ShopSearch>) =>
-    navigate({ search: (prev) => ({ ...prev, ...patch }) });
+    navigate({ search: (prev: ShopSearch) => ({ ...prev, ...patch }) });
 
   const products = useMemo(() => {
     let list = PRODUCTS.slice();

@@ -1,6 +1,7 @@
 import { createFileRoute, notFound, useNavigate, Link } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/SiteLayout";
 import { ProductCard } from "@/components/ProductCard";
+import type { Product } from "@/data/products";
 import { getProduct, relatedProducts } from "@/data/products";
 import { formatDZD } from "@/lib/format";
 import { useCart } from "@/stores/cart";
@@ -37,7 +38,7 @@ export const Route = createFileRoute("/product/$slug")({
 });
 
 function ProductPage() {
-  const { product } = Route.useLoaderData();
+  const { product } = Route.useLoaderData() as { product: Product };
   const navigate = useNavigate();
   const add = useCart((s) => s.add);
   const wishToggle = useWishlist((s) => s.toggle);
